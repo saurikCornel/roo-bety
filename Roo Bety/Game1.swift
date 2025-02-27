@@ -10,7 +10,7 @@ struct Game1: View {
     @State private var successfulJumps: Int = 0
     
     let itemSize: CGFloat = 130 // Размер блоков
-    let characterSize: CGFloat = 100 // Размер персонажа
+    let characterSize: CGFloat = 50 // Размер персонажа
     let itemSpeed: CGFloat = 10 // Скорость движения блоков
     let levels: [CGFloat] = [100, 200, 300] // 3 уровня по Y для блоков и персонажа
     
@@ -27,9 +27,10 @@ struct Game1: View {
                         // Добавляем персонажа
                         Image(currentSelectedCloseCard)
                             .resizable()
-                            .frame(width: characterSize, height: characterSize)
-                            .position(x: screenWidth / 9, y: characterY) // Персонаж по центру по X
+                            .frame(width: characterSize, height: characterSize + 30)
+                            .position(x: ((screenWidth / 9)), y: characterY - 80) // Персонаж по центру п
                             .zIndex(1)
+                        
                         
                         // Добавляем блоки (картинки)
                         ForEach(items.indices, id: \.self) { index in
@@ -69,7 +70,7 @@ struct Game1: View {
                             }
                     )
                 } else {
-                    // Портретная ориентация
+                    // Портретная ориентаци
                     ZStack {
                         Color.black.opacity(0.7)
                             .edgesIgnoringSafeArea(.all)
@@ -89,7 +90,7 @@ struct Game1: View {
         }
     }
     
-    // Направление движения персонажа
+    // Направление движения персонаж
     enum MoveDirection {
         case up
         case down
@@ -150,7 +151,7 @@ struct Game1: View {
         for index in items.indices {
             let item = items[index]
 
-            if item.y == characterY, abs(item.x - (screenWidth / 9)) < itemSize - 80 {
+            if item.y == characterY, abs(item.x - (screenWidth / 9)) < itemSize - 100 {
                 nearestBlockIndex = index
             }
 
@@ -227,7 +228,7 @@ struct WinViewLevel1: View {
                     currentLevel += 1
                     starscore += 3
                     coinscore += 10
-                    NavGuard.shared.currentScreen = .GAME2RULES
+                    NavGuard.shared.currentScreen = .GAMESCREEN2
                 }
             
         }

@@ -17,26 +17,20 @@ struct RulesView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                if let validURL = Bundle.main.url(forResource: "howtoplay", withExtension: "html") {
-                    BrowserViews(pageURL: validURL)
-                } else {
-                    Text("howtoplay.html not found in Bundle")
-                        .foregroundColor(.red)
-                        .font(.headline)
-                }
+                Game1Rules()
             }
-            .overlay(
-                ZStack {
-                    Image("close")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 70)
-                        .position(x: geometry.size.width / 9, y: geometry.size.height / 9)
-                        .onTapGesture {
-                            NavGuard.shared.currentScreen = .MENU
-                        }
-                }
-            )
+//            .overlay(
+//                ZStack {
+//                    Image("close")
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 30)
+//                        .position(x: geometry.size.width / 9, y: geometry.size.height / 9)
+//                        .onTapGesture {
+//                            NavGuard.shared.currentScreen = .MENU
+//                        }
+//                }
+//            )
         }
     }
 }

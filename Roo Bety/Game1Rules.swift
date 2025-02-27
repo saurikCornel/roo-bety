@@ -18,7 +18,7 @@ struct Game1Rules: View {
                                     .scaledToFit()
                                     .frame(width: 80, height: 80)
                                     .onTapGesture {
-                                        NavGuard.shared.currentScreen = .GAME1
+                                        NavGuard.shared.currentScreen = .GAME2RULES
                                     }
                             }
                         }

@@ -48,6 +48,15 @@ struct RootView: View {
             
         case .DAILY:
             DailyBonus()
+            
+        case .GAMESCREEN1:
+            Game1Screen()
+        case .GAMESCREEN2:
+            Game2Screen()
+        case .GAMESCREEN3:
+            Game3Screen()
+        case .GAMESCREEN4:
+            Game4Screen()
 
         }
 

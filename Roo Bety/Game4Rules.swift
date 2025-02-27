@@ -18,7 +18,7 @@ struct Game4Rules: View {
                                     .scaledToFit()
                                     .frame(width: 80, height: 80)
                                     .onTapGesture {
-                                        NavGuard.shared.currentScreen = .GAME4
+                                        NavGuard.shared.currentScreen = .GAME1
                                     }
                             }
                         }
@@ -36,7 +36,7 @@ struct Game4Rules: View {
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
             .background(
-                Image(.game4Rules)
+                Image(.gameScreen4)
                     .resizable()
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)

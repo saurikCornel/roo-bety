@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct MenuView: View {
-    
+    @AppStorage("firstOpen") var firstOpen = false
+    @StateObject private var soundManager = CheckingSound() // Подключаем CheckingSound
+    @AppStorage("isFirstLaunch") private var isFirstLaunch: Bool = true // Флаг первого запуска
 
     var body: some View {
         GeometryReader { geometry in
@@ -31,10 +33,22 @@ struct MenuView: View {
                             Spacer()
                         }
                         
-                        ButtonTemplateBig(image: "startBtn", action: {NavGuard.shared.currentScreen = .GAME1RULES})
+                        if firstOpen {
+                            ButtonTemplateBig(image: "startBtn", action: {NavGuard.shared.currentScreen = .GAMESCREEN1})
+                        } else {
+                            ButtonTemplateBig(image: "startBtn", action: {clickRight()})
+                        }
+//                        ButtonTemplateBig(image: "startBtn", action: {NavGuard.shared.currentScreen = .GAMESCREEN1})
                         
                             
                         }
+                    .onAppear {
+                        // Включаем музыку только при первом запуске
+                        if isFirstLaunch {
+                            soundManager.musicEnabled = true
+                            isFirstLaunch = false // Отмечаем, что первый запуск прошёл
+                        }
+                    }
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     
                 } else {
@@ -70,6 +84,10 @@ struct MenuView: View {
 
         }
     }
+    func clickRight() {
+        firstOpen = true
+        NavGuard.shared.currentScreen = .GAME1RULES
+    }
 }
 
 
@@ -86,7 +104,7 @@ struct BalanceTemplate: View {
                     .overlay(
                         ZStack {
                             Text("\(coinscore)")
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .fontWeight(.heavy)
                                 .font(.title3)
                                 .position(x: 80, y: 35)
@@ -108,7 +126,7 @@ struct StarTemplate: View {
                 .overlay(
                     ZStack {
                             Text("\(starscore)")
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .fontWeight(.heavy)
                             .font(.title3)
                             .position(x: 80, y: 35)

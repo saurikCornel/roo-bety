@@ -7,6 +7,6 @@ class CheckingSound: ObservableObject {
             SoundManager.shared.isSoundOn = musicEnabled
         }
     }
-    @AppStorage("vibroEnabled") var vibroEnabled: Bool = false
-    @AppStorage("soundEnabled") var soundEnabled: Bool = false
+    @AppStorage("vibroEnabled") var vibroEnabled: Bool = true
+    @AppStorage("soundEnabled") var soundEnabled: Bool = true
 }

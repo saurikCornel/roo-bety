@@ -153,7 +153,7 @@ struct WinViewLevel2: View {
                     currentLevel += 1
                     starscore += 3
                     coinscore += 10
-                    NavGuard.shared.currentScreen = .GAME3RULES
+                    NavGuard.shared.currentScreen = .GAMESCREEN3
                 }
         }
     }
