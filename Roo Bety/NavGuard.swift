@@ -20,6 +20,7 @@ enum AvailableScreens {
     case GAMESCREEN2
     case GAMESCREEN3
     case GAMESCREEN4
+    case PLEASURE
 }
 
 class NavGuard: ObservableObject {

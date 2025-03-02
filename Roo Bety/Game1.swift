@@ -5,23 +5,21 @@ struct Game1: View {
     @AppStorage("coinscore") var coinscore: Int = 10
     @State private var items: [GameItem] = []
     @State private var gameOver: Bool = false
-    @State private var characterY: CGFloat = 200 // Начальный уровень персонажа
-    @State private var characterOnBlockIndex: Int? = nil // Индекс блока, на котором стоит персонаж
+    @State private var characterY: CGFloat = 200
+    @State private var characterOnBlockIndex: Int? = nil
     @State private var successfulJumps: Int = 0
     
-    let itemSize: CGFloat = 130 // Размер блоков
-    let characterSize: CGFloat = 50 // Размер персонажа
-    let itemSpeed: CGFloat = 10 // Скорость движения блоков
-    let levels: [CGFloat] = [100, 200, 300] // 3 уровня по Y для блоков и персонажа
+    let itemSize: CGFloat = 130
+    let characterSize: CGFloat = 50
+    let itemSpeed: CGFloat = 10
+    let levels: [CGFloat] = [100, 200, 300]
     
     var body: some View {
         GeometryReader { geometry in
             let screenWidth = geometry.size.width
             let screenHeight = geometry.size.height
             
-            var isLandscape = screenWidth > screenHeight
             ZStack {
-                if isLandscape {
                     // Игра работает только в ландшафтной ориентации
                     ZStack {
                         // Добавляем персонажа
@@ -69,15 +67,6 @@ struct Game1: View {
                                 checkCollision(screenWidth: screenWidth)
                             }
                     )
-                } else {
-                    // Портретная ориентаци
-                    ZStack {
-                        Color.black.opacity(0.7)
-                            .edgesIgnoringSafeArea(.all)
-                        
-                        RotateDeviceScreen()
-                    }
-                }
             }
             .frame(width: screenWidth, height: screenHeight)
             .background(

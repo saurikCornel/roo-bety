@@ -34,9 +34,7 @@ struct ShopView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            var isLandscape = geometry.size.width > geometry.size.height
             ZStack {
-                if isLandscape {
                     ZStack {
                         VStack {
                             HStack {
@@ -116,14 +114,7 @@ struct ShopView: View {
                     }
 
                     
-                } else {
-                    ZStack {
-                        Color.black.opacity(0.7)
-                            .edgesIgnoringSafeArea(.all)
-                        
-                        RotateDeviceScreen()
-                    }
-                }
+ 
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
             .background(

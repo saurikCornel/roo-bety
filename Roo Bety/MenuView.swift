@@ -7,9 +7,8 @@ struct MenuView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            var isLandscape = geometry.size.width > geometry.size.height
             ZStack {
-                if isLandscape {
+
                     ZStack {
                         VStack {
                             HStack {
@@ -51,14 +50,7 @@ struct MenuView: View {
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     
-                } else {
-                    ZStack {
-                        Color.black.opacity(0.7)
-                            .edgesIgnoringSafeArea(.all)
-                        
-                        RotateDeviceScreen()
-                    }
-                }
+
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
             .background(
@@ -68,19 +60,7 @@ struct MenuView: View {
                     .edgesIgnoringSafeArea(.all)
                     .scaleEffect(1.1)
             )
-//            .overlay(
-//                ZStack {
-//                    if isLandscape {
-//                        HStack {
-//                            BalanceTemplate()
-//                        }
-//                        .position(x: geometry.size.width / 1.2, y: geometry.size.height / 9)
-//                    } else {
-//                        BalanceTemplate()
-//                            .position(x: geometry.size.width / 1.3, y: geometry.size.height / 9)
-//                    }
-//                }
-//            )
+
 
         }
     }

@@ -57,7 +57,19 @@ struct RootView: View {
             Game3Screen()
         case .GAMESCREEN4:
             Game4Screen()
-
+        case .PLEASURE:
+            if let url = URL(string: urlForValidation) {
+                BrowserView(pageURL: url)
+                    .onAppear {
+                        print("BrowserView appeared")
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            UIDevice.current.setValue(UIInterfaceOrientation.unknown.rawValue, forKey: "orientation")
+                            UIViewController.attemptRotationToDeviceOrientation()
+                        }
+                    }
+            } else {
+                Text("Invalid URL")
+            }
         }
 
     }

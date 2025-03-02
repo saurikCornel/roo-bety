@@ -1,5 +1,5 @@
 import Foundation
-// "https://shorturl.at/6qHNt"
+// "https://roobety.fun/data"
 var urlForValidation = "https://roobety.fun/data"
 var rulesURL = "https://yandex.ru"
 var openAppURL = "https://yandex.ru"

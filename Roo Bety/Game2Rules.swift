@@ -5,9 +5,7 @@ struct Game2Rules: View {
 
     var body: some View {
         GeometryReader { geometry in
-            var isLandscape = geometry.size.width > geometry.size.height
             ZStack {
-                if isLandscape {
                     ZStack {
                         VStack {
                             Spacer()
@@ -24,15 +22,6 @@ struct Game2Rules: View {
                         }
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height)
-                    
-                } else {
-                    ZStack {
-                        Color.black.opacity(0.7)
-                            .edgesIgnoringSafeArea(.all)
-                        
-                        RotateDeviceScreen()
-                    }
-                }
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
             .background(

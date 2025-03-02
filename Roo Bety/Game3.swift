@@ -56,10 +56,8 @@ struct Game3: View {
     
     var body: some View {
         GeometryReader { geometry in
-            let isLandscape = geometry.size.width > geometry.size.height
             
             ZStack {
-                if isLandscape {
                     if isGameOver {
                         if matchedPairs == cards.count / 2 {
                             WinViewLevel3()
@@ -79,11 +77,6 @@ struct Game3: View {
                             .padding()
                         }
                     }
-                } else {
-                    Color.black.opacity(0.7)
-                        .edgesIgnoringSafeArea(.all)
-                    RotateDeviceScreen()
-                }
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
             .background(

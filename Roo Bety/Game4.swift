@@ -49,10 +49,8 @@ struct Game4: View {
 
     var body: some View {
         GeometryReader { geometry in
-            let isLandscape = geometry.size.width > geometry.size.height
             let isPad = UIDevice.current.userInterfaceIdiom == .pad
             ZStack {
-                if isLandscape {
                     ZStack {
                         HStack {
                             VStack {
@@ -110,11 +108,6 @@ struct Game4: View {
                             .padding()
                         }
                     }
-                } else {
-                    Color.black.opacity(0.7)
-                        .edgesIgnoringSafeArea(.all)
-                    RotateDeviceScreen()
-                }
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
             .background(
